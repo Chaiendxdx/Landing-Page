@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import useViewport from "./Custom Hook/useViewport";
+import Header from "./Header/Header";
+import HeaderResponsive from "./Responsive/Header/HeaderResponsive";
 
 function App() {
+  const viewPort = useViewport();
+  const isMobile = viewPort.width <= 1024;
+  if (isMobile) {
+    return (
+      <>
+        <HeaderResponsive />
+      </>
+    );
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
